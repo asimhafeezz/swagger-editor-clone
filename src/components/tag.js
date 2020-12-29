@@ -12,9 +12,9 @@ const barSectionRoot = {
 	maxWidth: '700px',
 	display: 'flex',
 	justifyContent: 'space-between',
-	padding: '.3rem',
-	border: '1px solid black',
-	borderRadius: '5px',
+	padding: ' .6rem .3rem',
+	borderBottom: '1px solid black',
+	cursor: 'pointer',
 }
 const barSection = {
 	display: 'flex',
@@ -27,7 +27,6 @@ const aStyle = {
 
 const iconStyle = {
 	fontWeight: 'bolder',
-	cursor: 'pointer',
 	marginTop: '.8rem',
 }
 
@@ -46,9 +45,9 @@ const Tag = props => {
 	return (
 		<div style={root}>
 			{/* bar Section */}
-			<div style={barSectionRoot}>
+			<div style={barSectionRoot} onClick={onArrowClickHandler}>
 				<section style={barSection}>
-					<h1>{name}</h1>
+					<h2>{name}</h2>
 					<p>{description}</p>
 				</section>
 				<section style={barSection}>
@@ -58,7 +57,6 @@ const Tag = props => {
 					</a>
 					<i
 						style={iconStyle}
-						onClick={onArrowClickHandler}
 						className={open ? 'fa fa-chevron-down' : 'fa fa-chevron-right'}
 					/>
 				</section>

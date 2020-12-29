@@ -6,12 +6,12 @@ import styled, { css } from 'styled-components'
 const backgroundColorsMixin = css`
 	background-color: ${({ heading }) =>
 		heading === 'put'
-			? 'rgb(255, 119, 0, 0.2)'
+			? 'rgb(255, 119, 0, 0.1)'
 			: heading === 'get'
-			? 'rgb(46, 70, 179, 0.2)'
+			? 'rgb(46, 70, 179, 0.1)'
 			: heading === 'patch'
-			? 'rgb(36, 171, 47, 0.2)'
-			: heading === 'delete' && 'rgb(255, 0, 21, 0.2)'};
+			? 'rgb(36, 171, 47, 0.1)'
+			: heading === 'delete' && 'rgb(255, 0, 21, 0.1)'};
 	border: 1px solid
 		${({ heading }) =>
 			heading === 'put'
@@ -28,9 +28,14 @@ const Root = styled.div``
 const HeaderContainer = styled.div`
 	${backgroundColorsMixin}
 	margin: 0.5rem 0;
+	${({ open }) =>
+		open &&
+		css`
+			margin-bottom: 0;
+		`}
 	padding: 0.5rem;
 	max-width: 700px;
-	border-radius: 5px;
+	border-radius: ${({ open }) => (!open ? '4px' : '4px 4px 0 0')};
 	cursor: pointer;
 `
 const Header = styled.div`
@@ -59,7 +64,7 @@ const Header = styled.div`
 	}
 	p {
 		padding: 0;
-		padding-top: 0.2rem;
+		padding-top: 0.1rem;
 	}
 `
 
@@ -67,7 +72,7 @@ const Content = styled.div`
 	${backgroundColorsMixin}
 	max-width: 700px;
 	padding: 0.5rem;
-	border-radius: 3px;
+	border-radius: ${({ open }) => (!open ? '4px' : '0 0 4px 4px')};
 `
 
 const RequestBodySection = styled.section`
@@ -76,7 +81,7 @@ const RequestBodySection = styled.section`
 	background-color: #ffff;
 	padding: 0.6rem 0.4rem;
 	margin: 0.5rem 0%;
-	border-radius: 5px;
+	border-radius: 3px;
 	p {
 		color: red;
 		padding: 0;
@@ -96,8 +101,37 @@ const HeadingSectionOfRequestBodySection = styled.section`
 `
 
 const DescriptionOfRequestBody = styled.section`
-	padding: 0.8rem 0;
-	padding: 0 0.4rem;
+	padding: 0.8rem 0.4rem;
+`
+
+const ResponseSection = styled.div`
+	.responseHeading {
+		background-color: #ffff;
+		padding: 0.8rem 0.4rem;
+		border-radius: 3px;
+	}
+`
+
+const ResponseSectionContent = styled.div`
+	display: flex;
+	padding: 0.8rem 0.4rem;
+	.subContentHeading {
+		display: flex;
+		flex: 1;
+		gap: 1.5rem;
+	}
+	h4 {
+		font-weight: 520;
+		margin: 0.4rem 0;
+	}
+	${({ subContentHeadingValue }) =>
+		subContentHeadingValue &&
+		css`
+			h4 {
+				font-weight: 330;
+				margin: 0.4rem 0;
+			}
+		`}
 `
 
 const Select = styled.select``
@@ -113,24 +147,27 @@ const Path = props => {
 
 	return (
 		<Root>
-			<HeaderContainer onClick={onHeaderClickHandler} heading={heading}>
-				<Header heading={heading}>
+			<HeaderContainer
+				onClick={onHeaderClickHandler}
+				heading={heading}
+				open={open}>
+				<Header heading={heading} open={open}>
 					<section>
 						<h5>{heading}</h5>
 					</section>
-					<h3>{routeName}</h3>
+					<h4>{routeName}</h4>
 					<p>{secondItem?.summary || ''}</p>
 				</Header>
 			</HeaderContainer>
 
 			{open && (
-				<Content heading={heading}>
-					<h3>Parameters</h3>
+				<Content heading={heading} open={open}>
+					<h4>Parameters</h4>
 					{secondItem?.requestBody && (
 						<>
 							<RequestBodySection>
 								<HeadingSectionOfRequestBodySection>
-									<h3>Request Body</h3>
+									<h4>Request Body</h4>
 									<p>
 										{secondItem.requestBody.required === true ? 'required' : ''}
 									</p>
@@ -147,6 +184,28 @@ const Path = props => {
 								{secondItem.requestBody.description}
 							</DescriptionOfRequestBody>
 						</>
+					)}
+					{secondItem.responses && (
+						<ResponseSection>
+							<h4 className='responseHeading'>Response</h4>
+							<ResponseSectionContent>
+								<div className='subContentHeading'>
+									<h4>Code</h4>
+									<h4>Description</h4>
+								</div>
+								<h4>Links</h4>
+							</ResponseSectionContent>
+							<hr />
+							<ResponseSectionContent subContentHeadingValue>
+								<div className='subContentHeading'>
+									<h4>{Object.keys(secondItem.responses)[0]}</h4>
+									<h4>
+										{Object.entries(secondItem.responses)[0][1].description}
+									</h4>
+								</div>
+								<h4>{secondItem.responses.link || 'No Links'}</h4>
+							</ResponseSectionContent>
+						</ResponseSection>
 					)}
 				</Content>
 			)}
