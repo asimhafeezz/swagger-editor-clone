@@ -1,4 +1,8 @@
 import { useState } from 'react'
+import Path from './path'
+
+//data
+import data from '../data/data.json'
 
 //css
 const root = {
@@ -27,8 +31,20 @@ const iconStyle = {
 	marginTop: '.8rem',
 }
 
+//css for Path Component
+
+// const Path = ({ secondItem, buttonName }) => (
+// 	<>
+// 		<button>{buttonName}</button>
+// 		<h3>{secondItem.tags[0]}</h3>
+// 	</>
+// )
+
 const Tag = props => {
 	const { name, description, externalDocs } = props
+
+	//operations
+	const newData = Object.entries(data.paths)
 
 	const [open, setOpen] = useState(false)
 
@@ -61,7 +77,18 @@ const Tag = props => {
 
 			{open && externalDocs && (
 				<div>
-					<h3>Content of {name}</h3>
+					{Object.entries(newData).map(firstItem =>
+						Object.values(firstItem[1][1]).map((secondItem, i) => {
+							return (
+								secondItem.tags[0] === name && (
+									<Path
+										secondItem={secondItem}
+										buttonName={Object.keys(firstItem[1][1])[0]}
+									/>
+								)
+							)
+						})
+					)}
 				</div>
 			)}
 		</div>

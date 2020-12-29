@@ -172,7 +172,7 @@
 		},
 		"/store": {
 			"put": {
-				"tags": ["pet"],
+				"tags": ["user"],
 				"summary": "Add a new pet to the store",
 				"description": "",
 				"requestBody": {

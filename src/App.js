@@ -3,6 +3,7 @@ import './App.css'
 //data
 import data from './data/data.json'
 import Tag from './components/tag'
+import Path from './components/path'
 
 function App() {
 	return (
