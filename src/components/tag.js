@@ -70,7 +70,6 @@ const Tag = props => {
 				<div>
 					{Object.entries(newData).map(firstItem =>
 						Object.values(firstItem[1][1]).map((secondItem, i) => {
-							console.log(firstItem[1][1])
 							return (
 								secondItem.tags[0] === name && (
 									<Path
