@@ -31,15 +31,6 @@ const iconStyle = {
 	marginTop: '.8rem',
 }
 
-//css for Path Component
-
-// const Path = ({ secondItem, buttonName }) => (
-// 	<>
-// 		<button>{buttonName}</button>
-// 		<h3>{secondItem.tags[0]}</h3>
-// 	</>
-// )
-
 const Tag = props => {
 	const { name, description, externalDocs } = props
 
@@ -79,11 +70,14 @@ const Tag = props => {
 				<div>
 					{Object.entries(newData).map(firstItem =>
 						Object.values(firstItem[1][1]).map((secondItem, i) => {
+							console.log(firstItem[1][1])
 							return (
 								secondItem.tags[0] === name && (
 									<Path
+										key={i}
 										secondItem={secondItem}
-										buttonName={Object.keys(firstItem[1][1])[0]}
+										heading={Object.keys(firstItem[1][1])[i]}
+										routeName={firstItem[1][0]}
 									/>
 								)
 							)

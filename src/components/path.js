@@ -4,9 +4,16 @@ import styled from 'styled-components'
 //styled components
 const Root = styled.div``
 const HeaderContainer = styled.div`
-	padding: 0.5rem;
-	background-color: #b18431;
+	background-color: ${({ heading }) =>
+		heading === 'put'
+			? 'rgb(255, 119, 0, 0.6)'
+			: heading === 'get'
+			? 'rgb(46, 70, 179, 0.6)'
+			: heading === 'patch'
+			? 'rgb(36, 171, 47, 0.6)'
+			: heading === 'delete' && 'rgb(255, 0, 21, 0.6)'};
 	margin: 0.5rem 0;
+	padding: 0.5rem;
 	max-width: 700px;
 	border-radius: 5px;
 	cursor: pointer;
@@ -15,6 +22,14 @@ const Header = styled.div`
 	display: flex;
 	gap: 1rem;
 	section {
+		background-color: ${({ heading }) =>
+			heading === 'put'
+				? 'rgb(255, 119, 0, 0.6)'
+				: heading === 'get'
+				? 'rgb(46, 70, 179, 0.6)'
+				: heading === 'patch'
+				? 'rgb(36, 171, 47, 0.6)'
+				: heading === 'delete' && 'rgb(255, 0, 21, 0.6)'};
 		font-size: 1.2rem;
 		font-weight: 500;
 		padding: 0.2rem;
@@ -23,7 +38,6 @@ const Header = styled.div`
 		border: 0;
 		outline: none;
 		text-transform: uppercase;
-		background-color: #cdcf42;
 		text-align: center;
 	}
 	p {
@@ -33,7 +47,7 @@ const Header = styled.div`
 `
 
 const Path = props => {
-	const { secondItem, buttonName } = props
+	const { secondItem, heading, routeName } = props
 
 	const [open, setOpen] = useState(false)
 
@@ -43,17 +57,17 @@ const Path = props => {
 
 	return (
 		<Root>
-			<HeaderContainer onClick={onHeaderClickHandler}>
-				<Header>
-					<section>{buttonName}</section>
-					<h3>{secondItem.tags[0]}</h3>
+			<HeaderContainer onClick={onHeaderClickHandler} heading={heading}>
+				<Header heading={heading}>
+					<section>{heading}</section>
+					<h3>{routeName}</h3>
 					<p>{secondItem.summary || ''}</p>
 				</Header>
 			</HeaderContainer>
 
 			{open && (
 				<>
-					<h3>{buttonName}</h3>
+					<h3>{heading}</h3>
 				</>
 			)}
 		</Root>
