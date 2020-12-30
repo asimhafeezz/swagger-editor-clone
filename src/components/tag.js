@@ -1,34 +1,38 @@
 import { useState } from 'react'
+import styled from 'styled-components'
 import Path from './path'
 
 //data
 import data from '../data/data.json'
 
 //css
-const root = {
-	margin: '.5rem 0',
-}
-const barSectionRoot = {
-	maxWidth: '700px',
-	display: 'flex',
-	justifyContent: 'space-between',
-	padding: ' .6rem .3rem',
-	borderBottom: '1px solid black',
-	cursor: 'pointer',
-}
-const barSection = {
-	display: 'flex',
-	gap: '.6rem',
-}
+const Root = styled.div`
+	margin: 0.5rem 0;
+`
 
-const aStyle = {
-	marginTop: '.6rem',
-}
+const BarSectionRoot = styled.div`
+	max-width: 700px;
+	display: flex;
+	justify-content: space-between;
+	padding: 0.8rem 0.3rem;
+	border-bottom: 1px solid black;
+	cursor: pointer;
+	:hover {
+		background-color: #f8f8f8;
+	}
+`
+const BarSection = styled.section`
+	display: flex;
+	gap: 0.6rem;
+`
 
-const iconStyle = {
-	fontWeight: 'bolder',
-	marginTop: '.8rem',
-}
+const ATag = styled.a`
+	margin-top: 0.6rem;
+`
+
+const Icon = styled.i`
+	margin-top: 0.8rem;
+`
 
 const Tag = props => {
 	const { name, description, externalDocs } = props
@@ -43,24 +47,23 @@ const Tag = props => {
 	}
 
 	return (
-		<div style={root}>
+		<Root>
 			{/* bar Section */}
-			<div style={barSectionRoot} onClick={onArrowClickHandler}>
-				<section style={barSection}>
+			<BarSectionRoot onClick={onArrowClickHandler}>
+				<BarSection>
 					<h2>{name}</h2>
 					<p>{description}</p>
-				</section>
-				<section style={barSection}>
+				</BarSection>
+				<BarSection>
 					<p>{`${externalDocs?.description || ''}`}</p>
-					<a href={`${externalDocs?.url || ''}`} target='blank' style={aStyle}>
+					<ATag href={`${externalDocs?.url || ''}`} target='blank'>
 						{externalDocs?.url || ''}
-					</a>
-					<i
-						style={iconStyle}
+					</ATag>
+					<Icon
 						className={open ? 'fa fa-chevron-down' : 'fa fa-chevron-right'}
 					/>
-				</section>
-			</div>
+				</BarSection>
+			</BarSectionRoot>
 
 			{/* bar Content Section */}
 
@@ -82,7 +85,7 @@ const Tag = props => {
 					)}
 				</div>
 			)}
-		</div>
+		</Root>
 	)
 }
 

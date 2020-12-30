@@ -33,7 +33,7 @@ const HeaderContainer = styled.div`
 		css`
 			margin-bottom: 0;
 		`}
-	padding: 0.5rem;
+	padding: 0.6rem 0.5rem;
 	max-width: 700px;
 	border-radius: ${({ open }) => (!open ? '4px' : '4px 4px 0 0')};
 	cursor: pointer;
@@ -70,6 +70,11 @@ const Header = styled.div`
 
 const Content = styled.div`
 	${backgroundColorsMixin}
+	${({ open }) =>
+		open &&
+		css`
+			border-top: 0;
+		`}
 	max-width: 700px;
 	padding: 0.5rem;
 	border-radius: ${({ open }) => (!open ? '4px' : '0 0 4px 4px')};
@@ -78,7 +83,7 @@ const Content = styled.div`
 const RequestBodySection = styled.section`
 	display: flex;
 	justify-content: space-between;
-	background-color: #ffff;
+	background-color: #ffffff;
 	padding: 0.6rem 0.4rem;
 	margin: 0.5rem 0%;
 	border-radius: 3px;
@@ -106,7 +111,7 @@ const DescriptionOfRequestBody = styled.section`
 
 const ResponseSection = styled.div`
 	.responseHeading {
-		background-color: #ffff;
+		background-color: #ffffff;
 		padding: 0.8rem 0.4rem;
 		border-radius: 3px;
 	}
@@ -134,7 +139,27 @@ const ResponseSectionContent = styled.div`
 		`}
 `
 
-const Select = styled.select``
+const ExtensionSection = styled.div`
+	:nth-child(odd) {
+		h4 {
+			font-weight: 520;
+		}
+	}
+`
+
+const EntensionSubSection = styled.section`
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 0.5rem;
+	padding: 0.8rem 0.4rem;
+	h4 {
+		font-weight: 520;
+	}
+	h5 {
+		font-weight: 320;
+		font-size: 1rem;
+	}
+`
 
 const Path = props => {
 	const { secondItem, heading, routeName } = props
@@ -172,13 +197,13 @@ const Path = props => {
 										{secondItem.requestBody.required === true ? 'required' : ''}
 									</p>
 								</HeadingSectionOfRequestBodySection>
-								<Select>
+								<select>
 									{Object.keys(secondItem.requestBody.content).map(
 										(item, i) => (
 											<option key={i}>{item}</option>
 										)
 									)}
-								</Select>
+								</select>
 							</RequestBodySection>
 							<DescriptionOfRequestBody>
 								{secondItem.requestBody.description}
@@ -207,6 +232,17 @@ const Path = props => {
 							</ResponseSectionContent>
 						</ResponseSection>
 					)}
+					<ExtensionSection>
+						<EntensionSubSection>
+							<h4>Field</h4>
+							<h4>Value</h4>
+						</EntensionSubSection>
+						<hr />
+						<EntensionSubSection>
+							<h5>Field</h5>
+							<h5>Value</h5>
+						</EntensionSubSection>
+					</ExtensionSection>
 				</Content>
 			)}
 		</Root>
