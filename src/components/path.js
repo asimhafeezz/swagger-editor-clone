@@ -78,6 +78,13 @@ const Content = styled.div`
 	max-width: 700px;
 	padding: 0.5rem;
 	border-radius: ${({ open }) => (!open ? '4px' : '0 0 4px 4px')};
+	.responseHeading {
+		background-color: #ffffff;
+		padding: 0.8rem 0.4rem;
+		border-radius: 3px;
+		margin: 0.5rem 0;
+		box-shadow: 0 2px 4px rgb(0, 0, 0, 0.2);
+	}
 `
 
 const RequestBodySection = styled.section`
@@ -87,9 +94,11 @@ const RequestBodySection = styled.section`
 	padding: 0.6rem 0.4rem;
 	margin: 0.5rem 0%;
 	border-radius: 3px;
+	box-shadow: 0 2px 4px rgb(0, 0, 0, 0.2);
 	p {
 		color: red;
 		padding: 0;
+		font-size: small;
 	}
 	select {
 		margin-top: 0;
@@ -105,17 +114,11 @@ const HeadingSectionOfRequestBodySection = styled.section`
 	gap: 0.5rem;
 `
 
-const DescriptionOfRequestBody = styled.section`
+const ContentPaddingRapper = styled.section`
 	padding: 0.8rem 0.4rem;
 `
 
-const ResponseSection = styled.div`
-	.responseHeading {
-		background-color: #ffffff;
-		padding: 0.8rem 0.4rem;
-		border-radius: 3px;
-	}
-`
+const ResponseSection = styled.div``
 
 const ResponseSectionContent = styled.div`
 	display: flex;
@@ -187,7 +190,8 @@ const Path = props => {
 
 			{open && (
 				<Content heading={heading} open={open}>
-					<h4>Parameters</h4>
+					<h4 className='responseHeading'>Parameters</h4>
+					<ContentPaddingRapper>No Parameters</ContentPaddingRapper>
 					{secondItem?.requestBody && (
 						<>
 							<RequestBodySection>
@@ -205,9 +209,9 @@ const Path = props => {
 									)}
 								</select>
 							</RequestBodySection>
-							<DescriptionOfRequestBody>
+							<ContentPaddingRapper>
 								{secondItem.requestBody.description}
-							</DescriptionOfRequestBody>
+							</ContentPaddingRapper>
 						</>
 					)}
 					{secondItem.responses && (
@@ -239,8 +243,12 @@ const Path = props => {
 						</EntensionSubSection>
 						<hr />
 						<EntensionSubSection>
-							<h5>Field</h5>
-							<h5>Value</h5>
+							<h5>x-location</h5>
+							<h5>4000</h5>
+						</EntensionSubSection>
+						<EntensionSubSection>
+							<h5>x-metrics</h5>
+							<h5>{Object.entries(secondItem['x-metrics']) + ':""'}</h5>
 						</EntensionSubSection>
 					</ExtensionSection>
 				</Content>
