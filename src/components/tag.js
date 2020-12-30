@@ -11,14 +11,13 @@ const Root = styled.div`
 `
 
 const BarSectionRoot = styled.div`
-	max-width: 700px;
 	display: flex;
 	justify-content: space-between;
 	padding: 0.8rem 0.3rem;
 	border-bottom: 1px solid black;
 	cursor: pointer;
 	:hover {
-		background-color: #f8f8f8;
+		background-color: #494949;
 	}
 `
 const BarSection = styled.section`

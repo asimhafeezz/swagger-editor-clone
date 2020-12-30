@@ -3,12 +3,13 @@ import './App.css'
 //data
 import data from './data/data.json'
 import Tag from './components/tag'
+import Schema from './components/schema'
 
 function App() {
 	return (
 		<div className='App'>
 			{/* main upper content */}
-			<h2>{data.info.title}</h2>
+			<h1>{data.info.title}</h1>
 			<p>{data.info.description}</p>
 			<ul>
 				<li>
@@ -44,6 +45,9 @@ function App() {
 			{data.tags.map((item, i) => {
 				return <Tag key={i} {...item} />
 			})}
+
+			{/* components schemas */}
+			<Schema data={data} />
 		</div>
 	)
 }

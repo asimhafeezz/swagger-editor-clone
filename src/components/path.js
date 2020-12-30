@@ -27,20 +27,21 @@ const Root = styled.div``
 
 const HeaderContainer = styled.div`
 	${backgroundColorsMixin}
-	margin: 0.5rem 0;
+	margin: 0.6rem 0;
 	${({ open }) =>
 		open &&
 		css`
 			margin-bottom: 0;
 		`}
 	padding: 0.6rem 0.5rem;
-	max-width: 700px;
 	border-radius: ${({ open }) => (!open ? '4px' : '4px 4px 0 0')};
 	cursor: pointer;
 `
 const Header = styled.div`
-	display: flex;
-	gap: 1rem;
+	display: grid;
+	grid-template-columns: 1fr 7fr;
+	gap: 0.7rem;
+	position: static;
 	section {
 		background-color: ${({ heading }) =>
 			heading === 'put'
@@ -58,13 +59,18 @@ const Header = styled.div`
 		border: 0;
 		text-transform: uppercase;
 		text-align: center;
+		min-width: 80px;
 		h5 {
 			margin: 0 auto;
 		}
 	}
-	p {
-		padding: 0;
-		padding-top: 0.1rem;
+	div {
+		display: flex;
+		gap: 0.7rem;
+		p {
+			padding: 0;
+			padding-top: 0.1rem;
+		}
 	}
 `
 
@@ -79,32 +85,34 @@ const Content = styled.div`
 	padding: 0.5rem;
 	border-radius: ${({ open }) => (!open ? '4px' : '0 0 4px 4px')};
 	.responseHeading {
-		background-color: #ffffff;
+		background-color: #c7c6c6;
 		padding: 0.8rem 0.4rem;
 		border-radius: 3px;
 		margin: 0.5rem 0;
 		box-shadow: 0 2px 4px rgb(0, 0, 0, 0.2);
+		color: #1d1d1d;
 	}
 `
 
 const RequestBodySection = styled.section`
 	display: flex;
 	justify-content: space-between;
-	background-color: #ffffff;
+	background-color: #c7c6c6;
 	padding: 0.6rem 0.4rem;
 	margin: 0.5rem 0%;
 	border-radius: 3px;
 	box-shadow: 0 2px 4px rgb(0, 0, 0, 0.2);
 	p {
-		color: red;
+		color: #750202;
 		padding: 0;
 		font-size: small;
+		font-weight: 400;
 	}
 	select {
 		margin-top: 0;
 		margin-bottom: 0;
 		padding: 0.1rem;
-		border: 1px solid black;
+		border: 1px solid azure;
 		border-radius: 3px;
 	}
 `
@@ -112,6 +120,9 @@ const RequestBodySection = styled.section`
 const HeadingSectionOfRequestBodySection = styled.section`
 	display: flex;
 	gap: 0.5rem;
+	h4 {
+		color: #1d1d1d;
+	}
 `
 
 const ContentPaddingRapper = styled.section`
@@ -183,8 +194,10 @@ const Path = props => {
 					<section>
 						<h5>{heading}</h5>
 					</section>
-					<h4>{routeName}</h4>
-					<p>{secondItem?.summary || ''}</p>
+					<div>
+						<h4>{routeName}</h4>
+						<p>{secondItem?.summary || ''}</p>
+					</div>
 				</Header>
 			</HeaderContainer>
 
