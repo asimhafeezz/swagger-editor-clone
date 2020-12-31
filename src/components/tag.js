@@ -14,7 +14,7 @@ const BarSectionRoot = styled.div`
 	display: flex;
 	justify-content: space-between;
 	padding: 0.8rem 0.3rem;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid azure;
 	cursor: pointer;
 	:hover {
 		background-color: #494949;

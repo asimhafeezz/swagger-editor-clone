@@ -2,6 +2,11 @@ body {
 	background-color: rgb(61, 60, 63);
 	color: azure;
 }
+
+hr {
+	background-color: azure;
+}
+
 *,
 *::after,
 *::before {
