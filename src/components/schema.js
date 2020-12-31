@@ -3,27 +3,23 @@ import styled from 'styled-components'
 import SchemaContent from './schemaContent'
 //root
 const Root = styled.div`
-	margin: 1rem 0;
-`
-
-const HeaderContainer = styled.section`
-	.contentHeading {
-		background-color: #a5a5a5;
-		padding: 0.8rem 0.4rem;
-		margin: 0.6rem 0;
-		color: #1d1d1d;
-		border-radius: 3px;
-	}
-
-	.format {
-		color: #e7e7e7;
-		font-size: 500;
-		margin-left: 0.3rem;
-	}
-
-	.types {
+	margin: 2rem 0;
+	h2 {
 		color: rgb(91, 157, 255);
 	}
+`
+
+const SchemaHeader = styled.section`
+	display: flex;
+	justify-content: space-between;
+	cursor: pointer;
+	padding: 1rem 0.3rem;
+	:hover {
+		background-color: #494949;
+	}
+`
+const Icon = styled.i`
+	margin-top: 0.7rem;
 `
 
 const Schema = ({ data }) => {
@@ -31,26 +27,24 @@ const Schema = ({ data }) => {
 	const { schemas } = components
 
 	//local state
-	// let [open, setOpen] = useState(false)
+	const [open, setOpen] = useState(false)
 
-	// let setOpenOnClickHandler = () => {
-	// 	setOpen(!open)
-	// }
-	// console.log({ schemas })
+	const setOpenOnClickHandler = () => {
+		setOpen(!open)
+	}
 
 	return (
 		<Root>
-			<HeaderContainer>
-				{Object.entries(schemas).map((firstItem, i) => {
+			<SchemaHeader onClick={setOpenOnClickHandler}>
+				<h2>Schemas</h2>
+				<Icon className={open ? 'fa fa-chevron-down' : 'fa fa-chevron-right'} />
+			</SchemaHeader>
+			<hr />
+			{open &&
+				Object.entries(schemas).map((firstItem, i) => {
 					console.log(firstItem[1].properties)
-					return (
-						<div key={i}>
-							<h3 className='contentHeading'>{firstItem[0]}</h3>
-							<SchemaContent firstItem={firstItem} />
-						</div>
-					)
+					return <SchemaContent key={i} firstItem={firstItem} />
 				})}
-			</HeaderContainer>
 		</Root>
 	)
 }

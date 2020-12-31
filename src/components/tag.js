@@ -13,7 +13,7 @@ const Root = styled.div`
 const BarSectionRoot = styled.div`
 	display: flex;
 	justify-content: space-between;
-	padding: 0.8rem 0.3rem;
+	padding: 1rem 0.3rem;
 	border-bottom: 1px solid azure;
 	cursor: pointer;
 	:hover {

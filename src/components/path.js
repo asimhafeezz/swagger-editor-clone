@@ -214,13 +214,15 @@ const Path = props => {
 										{secondItem.requestBody.required === true ? 'required' : ''}
 									</p>
 								</HeadingSectionOfRequestBodySection>
-								<select>
-									{Object.keys(secondItem.requestBody.content).map(
-										(item, i) => (
-											<option key={i}>{item}</option>
-										)
-									)}
-								</select>
+								<section>
+									<select>
+										{Object.keys(secondItem.requestBody.content).map(
+											(item, i) => (
+												<option key={i}>{item}</option>
+											)
+										)}
+									</select>
+								</section>
 							</RequestBodySection>
 							<ContentPaddingRapper>
 								{secondItem.requestBody.description}
