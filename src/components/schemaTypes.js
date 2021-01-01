@@ -46,13 +46,3 @@ export const EnumType = ({ enumItem }) => {
 		</RootEnumType>
 	)
 }
-
-const Types = ({ enumItem }) => {
-	return (
-		<>
-			<EnumType enumItem={enumItem} />
-		</>
-	)
-}
-
-export default Types

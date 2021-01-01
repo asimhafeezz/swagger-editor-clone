@@ -49,8 +49,6 @@ h1 {
 }
 
 select {
-	margin-top: 4rem;
-	margin-bottom: 2rem;
 	padding: 0.2rem;
 	border: 2px solid azure;
 	border-radius: 5px;
@@ -59,8 +57,6 @@ select {
 
 @media (max-width: 660px) {
 	select {
-		margin-top: 4rem;
-		margin-bottom: 2rem;
 		padding: 0.1rem;
 		font-size: 0.8rem;
 		width: 100%;
