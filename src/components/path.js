@@ -60,14 +60,12 @@ const Header = styled.div`
 		text-transform: uppercase;
 		text-align: center;
 		min-width: 80px;
-		h5 {
-			margin-right: 0.3rem;
-		}
 	}
 	div {
 		display: flex;
 		gap: 0.7rem;
 		p {
+			margin-left: 0.4rem;
 			padding: 0;
 			padding-top: 0.1rem;
 		}
