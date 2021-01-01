@@ -23,6 +23,16 @@ const BarSectionRoot = styled.div`
 const BarSection = styled.section`
 	display: flex;
 	gap: 0.6rem;
+
+	h2 {
+		font-weight: 550;
+	}
+
+	@media (max-width: 650px) {
+		p {
+			display: none;
+		}
+	}
 `
 
 const ATag = styled.a`
@@ -58,9 +68,11 @@ const Tag = props => {
 					<ATag href={`${externalDocs?.url || ''}`} target='blank'>
 						{externalDocs?.url || ''}
 					</ATag>
-					<Icon
-						className={open ? 'fa fa-chevron-down' : 'fa fa-chevron-right'}
-					/>
+					<i>
+						<Icon
+							className={open ? 'fa fa-chevron-down' : 'fa fa-chevron-right'}
+						/>
+					</i>
 				</BarSection>
 			</BarSectionRoot>
 

@@ -81,7 +81,6 @@ const Content = styled.div`
 		css`
 			border-top: 0;
 		`}
-	max-width: 700px;
 	padding: 0.5rem;
 	border-radius: ${({ open }) => (!open ? '4px' : '0 0 4px 4px')};
 	.responseHeading {

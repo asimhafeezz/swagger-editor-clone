@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import styled, { css } from 'styled-components'
+import { EnumType } from './schemaTypes'
 
 //root
 const Root = styled.div`
 	.contentHeading {
 		background-color: #494949;
-		padding: 0.9rem 0.4rem;
+		padding: 1.1rem 0.4rem;
 		margin: 0.6rem 0;
 		font-weight: 450;
 		border-radius: 4px;
@@ -47,7 +48,7 @@ const MainSchemaFormate = styled.code`
 `
 
 const Icon = styled.i`
-	margin-left: 0.5rem;
+	margin-left: 0.8rem;
 	cursor: pointer;
 `
 
@@ -82,15 +83,42 @@ const SchemaContent = ({ firstItem }) => {
 							<MainSchemaFormate key={i}>
 								<p>{secondItem[0]}</p>
 								<p className='types'>
-									{secondItem[1].type}
+									{secondItem[1].type === 'object' ? (
+										<>
+											{'{'}
+											{Object.entries(secondItem[1].properties).map(
+												objectItems => {
+													return (
+														<MainSchemaFormate key={i}>
+															<p>{objectItems[0]}</p>
+															{objectItems[0].format && (
+																<span className='format'>{`$(${secondItem[0].format})`}</span>
+															)}
+														</MainSchemaFormate>
+													)
+												}
+											)}
+											{'}'}
+										</>
+									) : (
+										secondItem[1].type
+									)}
+									{/* if formate exists */}
 									{secondItem[1].format && (
 										<span className='format'>{`$(${secondItem[1].format})`}</span>
 									)}
-									<span>
+									{/* if enum item exists */}
+									{secondItem[1].enum && (
+										<EnumType enumItem={secondItem[1].enum} />
+									)}
+									{/* if default value exists */}
+									<div>
 										{(secondItem[1].default === true
-											? 'true'
-											: secondItem[1].default === true && 'false') || ''}
-									</span>
+											? 'default: true'
+											: secondItem[1].default === false
+											? 'default: false'
+											: '') || ''}
+									</div>
 								</p>
 							</MainSchemaFormate>
 						)

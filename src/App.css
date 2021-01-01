@@ -1,12 +1,3 @@
-body {
-	background-color: rgb(61, 60, 63);
-	color: azure;
-}
-
-hr {
-	background-color: azure;
-}
-
 *,
 *::after,
 *::before {
@@ -16,12 +7,28 @@ hr {
 	outline: none;
 }
 
+.App {
+	max-width: 1000px;
+	margin: 1rem auto;
+	text-align: left;
+	padding: 0 0.6rem;
+}
+
+body {
+	background-color: rgb(61, 60, 63);
+	color: azure;
+}
+
+hr {
+	background-color: azure;
+}
+
 ul {
 	list-style-type: none;
 }
 
 p {
-	padding: 10px 0;
+	padding: 9px 0;
 }
 
 li {
@@ -37,7 +44,8 @@ a:hover {
 
 h1 {
 	color: rgb(91, 157, 255);
-	font-size: 2.2rem;
+	font-size: 2.5rem;
+	margin-bottom: 0.5rem;
 }
 
 select {
@@ -49,7 +57,7 @@ select {
 	font-size: 1rem;
 }
 
-@media (max-width: 620px) {
+@media (max-width: 660px) {
 	select {
 		margin-top: 4rem;
 		margin-bottom: 2rem;
@@ -63,9 +71,17 @@ select {
 	}
 }
 
-.App {
-	max-width: 700px;
-	margin: 1rem auto;
-	text-align: left;
-	padding: 0 0.6rem;
+@media (max-width: 450px) {
+	select {
+		margin-top: 4rem;
+		margin-bottom: 2rem;
+		padding: 0rem;
+		font-size: 0.7rem;
+		width: 100%;
+		min-width: 70px;
+	}
+	p,
+	a {
+		font-size: 0.8rem;
+	}
 }
