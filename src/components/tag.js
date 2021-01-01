@@ -45,7 +45,8 @@ const Icon = styled.i`
 `
 
 const Tag = props => {
-	const { name, description, externalDocs } = props
+	const { data, tagItems } = props
+	const { name, description, externalDocs } = tagItems
 
 	//operations
 	const newData = Object.entries(data.paths)

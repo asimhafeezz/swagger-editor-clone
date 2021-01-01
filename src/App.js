@@ -33,8 +33,8 @@ function App() {
 			</ServerSelect>
 
 			{/* tags */}
-			{data.tags.map((item, i) => {
-				return <Tag key={i} {...item} />
+			{data.tags.map((tagItem, i) => {
+				return <Tag key={i} tagItems={tagItem} data={data} />
 			})}
 
 			{/* components schemas */}
