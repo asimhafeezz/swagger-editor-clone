@@ -61,7 +61,7 @@ const Header = styled.div`
 		text-align: center;
 		min-width: 80px;
 		h5 {
-			margin: 0 auto;
+			margin-right: 0.3rem;
 		}
 	}
 	div {
