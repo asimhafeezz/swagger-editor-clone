@@ -1,3 +1,6 @@
+import { createGlobalStyle } from 'styled-components'
+
+const GlobalStyle = createGlobalStyle`
 *,
 *::after,
 *::before {
@@ -82,3 +85,7 @@ select {
 		font-size: 2.5rem;
 	}
 }
+
+`
+
+export default GlobalStyle

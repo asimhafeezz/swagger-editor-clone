@@ -2,9 +2,6 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import Path from './path'
 
-//data
-import data from '../data/data.json'
-
 //css
 const Root = styled.div`
 	margin: 0.5rem 0;
