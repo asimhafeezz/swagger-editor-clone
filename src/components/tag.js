@@ -41,6 +41,7 @@ const ATag = styled.a`
 
 const Icon = styled.i`
 	margin-top: 0.8rem;
+	margin-left: 0.5rem;
 `
 
 const Tag = props => {

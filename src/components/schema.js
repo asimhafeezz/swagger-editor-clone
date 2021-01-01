@@ -6,6 +6,7 @@ const Root = styled.div`
 	margin: 2rem 0;
 	h2 {
 		color: rgb(91, 157, 255);
+		font-weight: 630;
 	}
 `
 

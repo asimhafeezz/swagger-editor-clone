@@ -1,6 +1,6 @@
 ## Swagger Editor Clone
 
-Swagger editor UI clone made with React js using styled components and by integrating it's json formate.
+Swagger editor UI clone built using React js with styled components and it's open api json formate.
 
 ### Available Scripts
 

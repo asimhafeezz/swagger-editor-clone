@@ -1,11 +1,14 @@
 import './App.css'
 
+import styled from 'styled-components'
+
 //data
 import data from './data/data.json'
+
+//components
 import Tag from './components/tag'
 import Schema from './components/schema'
 import Info from './components/info'
-import styled from 'styled-components'
 
 //css
 const ServerSelect = styled.section`

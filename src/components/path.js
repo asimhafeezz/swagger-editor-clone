@@ -60,6 +60,9 @@ const Header = styled.div`
 		text-transform: uppercase;
 		text-align: center;
 		min-width: 80px;
+		h5 {
+			font-weight: 630;
+		}
 	}
 	div {
 		display: flex;
