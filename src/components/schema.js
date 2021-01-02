@@ -43,7 +43,6 @@ const Schema = ({ data }) => {
 			<hr />
 			{open &&
 				Object.entries(schemas).map((firstItem, i) => {
-					console.log(firstItem[1].properties)
 					return <SchemaContent key={i} firstItem={firstItem} />
 				})}
 		</Root>

@@ -17,13 +17,11 @@ const Root = styled.div`
 				margin-bottom: 0;
 			`}
 	}
-
 	.format {
 		color: #e7e7e7;
 		font-size: 500;
 		margin-left: 0.3rem;
 	}
-
 	.types {
 		color: rgb(91, 157, 255);
 	}
@@ -41,7 +39,6 @@ const MainSchemaFormate = styled.code`
 	grid-template-columns: repeat(2, 1fr);
 	width: 60%;
 	margin: 0.2rem 2rem;
-
 	@media (max-width: 600px) {
 		width: 100%;
 	}
@@ -53,8 +50,8 @@ const Icon = styled.i`
 `
 
 const SchemaContent = ({ firstItem }) => {
+	//local state
 	const [open, setOpen] = useState(false)
-
 	const setOpenOnClickHandler = () => {
 		setOpen(!open)
 	}

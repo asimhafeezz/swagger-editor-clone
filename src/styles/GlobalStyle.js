@@ -60,17 +60,6 @@ select {
 	min-width: 70px;
 }
 
-@media (max-width: 660px) {
-	select {
-		padding: 0.1rem;
-		font-size: 0.8rem;
-		width: 100%;
-	}
-	p,
-	a {
-		font-size: 0.8rem;
-	}
-}
 
 @media (max-width: 450px) {
 	select {
@@ -86,6 +75,18 @@ select {
 	}
 }
 
-`
+@media (max-width: 660px) {
+	select {
+		padding: 0.1rem;
+		font-size: 0.8rem;
+		width: 100%;
+	}
+	p,
+	a {
+		font-size: 0.8rem;
+	}
+}
 
+
+`
 export default GlobalStyle
